@@ -1,0 +1,5 @@
+<syntax> ::= <database> <table> <action>
+<database> ::= "@" <text>
+<table> ::= "/" <text> <grouping> <whereClause>
+<grouping> ::= "" | ":" <groups>
+<groups> ::= <group> | <group> "," <groups>

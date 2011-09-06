@@ -1,0 +1,15 @@
+{
+  "name" : "doq",
+  "description" : "Database object query library.",
+  "url" : "http://github.com/navstev0/DOQ-NodeJS-API.git",
+  "keywords" : ["database connections", "database api", "query language", "database connection framework"],
+  "author" : "Steven Adams <steven@consultstevo.com>",
+  "repository": "git://github.com/navstev0/DOQ-NodeJS-API.git",
+  "licenses" : ["OSL-3.0"],
+  "dependencies" : [ "bnf" ],
+  "lib" : "lib",
+  "main" : "./lib/compiler.js",
+  "version" : "0.0.1pre-alpha",
+  "directories" : { "lib":"./lib", "examples": "./examples", "filters":"./filters" },
+  "engines" : { "node": ">= 0.4.11" }
+}
