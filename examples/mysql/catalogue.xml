@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue admins="admin@example.com,other@exp.net" logLevel="query">
+	<groups defaultAccess="on">
+		<group id="admin" baseAct="07"/>
+		<group id="customer" baseAct="04" defaultAccess="off" />
+		<group id="guest" baseAct="01" defaultAccess="off" />
+	</groups>
+	<connections maxAnonymousQueries="3" lockOutTime="0" allowAnonymous="true" defaultFilter="string">
+		<connection id="database1" groupAct="customer:00" allowAnonymous="false">
+			<node id="userlist" indexBy="dex">
+				<node id="dex" filter="number" />
+				<node id="username" />
+			</node>
+		</connection>
+		<connection id="database2">
+			<node id="webuser" indexBy="dex" />
+		</connection>
+	</connections>
+</catalogue>

@@ -9,18 +9,20 @@ Description
 For those of you have had the desire to have an object relational database using your object, and not have to make a middle ware framework for every type of database, or program. This project was made to make my job easier, more portable, and more flexible as a web developer. The the interface framework uses a custom extendable query language, security framework, and plug-in interface for adding new database, or custom object types.
 
 Initial support to be added
---------------------------
+---------------------------
 
 Supported Databases
 -------------------
-MySql
-PostgreSQL
+
+- MySql
+- PostgreSQL
 
 Supported Objects
 -----------------
-CSV
-INI
-XML (XPath)
+
+- CSV
+- INI
+- XML (XPath)
 
 License
 -------
