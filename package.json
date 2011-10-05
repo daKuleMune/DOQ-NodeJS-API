@@ -6,7 +6,7 @@
   "author" : "Steven Adams <steven@consultstevo.com>",
   "repository": "git://github.com/navstev0/DOQ-NodeJS-API.git",
   "licenses" : ["OSL-3.0"],
-  "dependencies" : [ "bnf" ],
+  "dependencies" : [ "bnf", "libxmljs" ],
   "lib" : "lib",
   "main" : "./lib/compiler.js",
   "version" : "0.0.1pre-alpha",

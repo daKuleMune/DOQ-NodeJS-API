@@ -1,28 +1,35 @@
 DOQ API
 =======
 
-This is a interface programmed to make object transactions with databases easy to secure, read, write, and simply program. Programmed in JavaScript and tested with [nodeJS]( https://github.com/joyent/node).
+This is a interface programmed to make object transactions with databases easy to secure on many levels, serialize objects, and simply program. Programmed in JavaScript and tested with [nodeJS]( https://github.com/joyent/node).
 
 Description
 -----------
 
-For those of you have had the desire to have an object relational database using your object, and not have to make a middle ware framework for every type of database, or program. This project was made to make my job easier, more portable, and more flexible as a web developer. The the interface framework uses a custom extendable query language, security framework, and plug-in interface for adding new database, or custom object types.
+Built upon any database this API gives the ability to run a secure object relational databases. It has easy ways to add in more object types known as filters, and supports connection to multiple types of databases concurrently.
 
-Initial support to be added
----------------------------
+This project was made to make my job easier, more portable, and more flexible as a web developer. The the interface framework uses a custom extendable query language, security framework, and plug-in interface for adding new database, or custom object filters.
 
-Supported Databases
--------------------
-
-- MySql
-- PostgreSQL
-
-Supported Objects
+Example Databases
 -----------------
 
+- MySql ( Using 'db-mysql' )
+
+Prebuilt Filters Objects
+------------------------
+
+- String
+- Number
 - CSV
-- INI
-- XML (XPath)
+- XML ( Partial XPath Support )
+
+Road Map
+--------
+
+- Full XPath support, as well as the enhancements I wrote into the predecessor of DOQ
+- INI filter map
+- PostGreSQL example database
+- A cleaner plug-in/object abstraction layer
 
 License
 -------

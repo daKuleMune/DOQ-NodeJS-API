@@ -6,10 +6,13 @@
 	<tableSelection> ::= ":" <tableSelectionList>
 		<tableSelectionList> ::= <tableSelectionItem> | <tableSelectionItem> <_owsp> "," <_owsp> <tableSelectionList>
 		<tableSelectionItem> ::= <_text>
-	<tableQuery> ::= "[" <databaseQuery> "]"
-		<databaseQuery> ::= ""
-<column> ::= "" | <columnName>
-<columnName> ::= <_text>
-<selectionStyle> ::= <selectAll> | <selectFirst>
+	<tableQuery> ::= "[" <_owsp> <tableQueryList> <_owsp> "]"
+		<tableQueryList> ::= <tableStatment> | <tableStatment> <_wsp> <tableSeperator> <_wsp> <tableQueryList>
+			<tableSeperator> ::= "and" | "or"
+			<tableStatment> ::= <_text> <_owsp> <tableLogicSwitch> <_owsp> <_literal>
+				<tableLogicSwitch> ::= "!=" | "="
+	<column> ::= "" | #column
+<selectionStyle> ::= <selectAll> | <selectFirst> | <selectExecute>
 	<selectAll> ::= "*"
 	<selectFirst> ::= "$"
+	<selectExecute> ::= "!"
