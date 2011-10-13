@@ -7,32 +7,69 @@
  * Required modules.
  */
 var filterObject = require( "../lib/filter.js" ).Filter;
-var libxml = require( "libxmljs" );
+var libxml = require( "../lib/libxmli.js" ).libxml;
 
 exports.Filter = function(){
 	
 	this.name = "xml";
 
-	this.bnf = '<syntax> ::= <columnName> <xpath>\n'+
-		'<xpath> ::= "/" <_text>';
+	this.bnf = '<syntax> ::= <columnName> <xpath>\n'
+		+'<xpath> ::= <xpathStatments>\n'
+		+'<xpathStatments> ::= <xpathStatment> | <xpathStatment> <xpathStatments>\n'
+		+'<xpathStatment> ::= <scope> <xpathVariable> <argumentData>\n'
+		+'<xpathVariable> ::= <attribute> <_text>\n'
+		+'<argumentData> ::= "" | "[" <_owsp> <arguments> <_owsp> "]"\n'
+		+'<arguments> ::= <arrayArg>\n'
+		+'<arrayArg> ::= <_digits>\n'
+		+'<attribute> ::= "" | <isAttribute>\n'
+		+'<isAttribute> ::= "@"\n'
+		+'<scope> ::= "/" | "//"';
 
 	this.parseEvents = {
 		"xpath":function( token ){
 			this.query.columnQuery = token.text;
-		}
+		}/*,
+		"scope":function( token ){
+			this.query.columnQuery += token.text;
+		},
+		"xpathVariable":function( token ){
+			this.query.columnQuery += token.text;
+		},
+		"arrayArg":function( token ){
+			this.query.columnQuery += "[" + parseInt( token.text ) 1 + "]";
+		}*/
 	};
 	
 	this.QueryObject = function( query ){
 		if( query.columnQuery != undefined ){
-			return this.dataObject.root.find( query.columnQuery );
+			if( query.columnQuery.substring( 0, 2 ) != "//" ){
+				query.columnQuery = query.columnQuery.substring( 1 );
+			}
+			var searchStatment = this.dataObject.root().find( query.columnQuery );
+			switch( query.type ){
+			case "$":
+				return searchStatment[0];
+				break;
+			case "*":
+				if( query.isAttribute ){
+					
+				}
+				else{
+					return searchStatment;
+				}
+				break;
+			default:
+				console( "Query.type " + query.type + " is not supported by xml objects." );
+				break;
+			}
 		}
 		else{
-			return this.dataObject;
+			return this.dataObject.root();
 		}
 	};
 
 	this.Creation = function( ){
-		this.dataObject = libxml.parseXmlString( "<__root>" + this.dataStream + "</__root>" ); ;
+		this.dataObject = libxml.parseXmlString( "<__root>" + this.dataStream + "</__root>" );
 	};
 	
 	//ABSTRACTION LAYER//

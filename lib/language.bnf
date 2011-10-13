@@ -1,17 +1,20 @@
-<syntax> ::= <connection> "/" <table> "/" <column> <selectionStyle>
+<syntax> ::= <connection> "/" <table> "/" <column>
 <connection> ::= "@" <connectionName>
 	<connectionName> ::= <_text>
-<table> ::= <tableName> <tableSelection> <tableQuery> | <tableName> <tableQuery> | <tableName>
+<table> ::= <tableName> <tableSelection> <tableReturn> | <tableName> <tableReturn> | <tableName>
 	<tableName> ::= <_text>
 	<tableSelection> ::= ":" <tableSelectionList>
 		<tableSelectionList> ::= <tableSelectionItem> | <tableSelectionItem> <_owsp> "," <_owsp> <tableSelectionList>
 		<tableSelectionItem> ::= <_text>
-	<tableQuery> ::= "[" <_owsp> <tableQueryList> <_owsp> "]"
-		<tableQueryList> ::= <tableStatment> | <tableStatment> <_wsp> <tableSeperator> <_wsp> <tableQueryList>
-			<tableSeperator> ::= "and" | "or"
-			<tableStatment> ::= <_text> <_owsp> <tableLogicSwitch> <_owsp> <_literal>
-				<tableLogicSwitch> ::= "!=" | "="
-	<column> ::= "" | #column
+	<tableReturn> ::= <tableQuery> | <tableQuery> <tableReturnPoint> | <tableReturnPoint>
+		<tableQuery> ::= "[" <_owsp> <tableQueryList> <_owsp> "]"
+			<tableQueryList> ::= <tableStatment> | <tableStatment> <_wsp> <tableSeperator> <_wsp> <tableQueryList>
+				<tableSeperator> ::= "and" | "or"
+				<tableStatment> ::= <_text> <_owsp> <tableLogicSwitch> <_owsp> <_literal>
+					<tableLogicSwitch> ::= "!=" | "="
+		<tableReturnPoint> ::= "[" <_owsp> <tableReturnCaret> <_owsp> "]"
+			<tableReturnCaret> ::= <_digits> | "*"
+	<column> ::= "" <selectionStyle> | #column
 <selectionStyle> ::= <selectAll> | <selectFirst> | <selectExecute>
 	<selectAll> ::= "*"
 	<selectFirst> ::= "$"
