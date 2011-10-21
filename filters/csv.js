@@ -11,6 +11,8 @@ var filterObject = require( "../lib/filter.js" ).Filter;
 exports.Filter = function(){
 	
 	this.name = "csv";
+	
+	this.queryable = true;
 
 	this.bnf = '<syntax> ::= <columnName> <iter>\n<iter> ::= "[" <_owsp> <_digits> <_owsp> "]"';
 

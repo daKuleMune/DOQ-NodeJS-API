@@ -11,6 +11,8 @@ var filterObject = require( "../lib/filter.js" ).Filter;
 exports.Filter = function(){
 	
 	this.name = "string";
+	
+	this.queryable = false;
 
 	this.QueryObject = function( query ){
 		if( query.value != undefined ){

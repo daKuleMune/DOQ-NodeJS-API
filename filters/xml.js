@@ -13,6 +13,8 @@ exports.Filter = function(){
 	
 	this.name = "xml";
 
+	this.queryable = true;
+	
 	this.bnf = '<syntax> ::= <columnName> <xpath>\n'
 		+'<xpath> ::= <xpathStatments>\n'
 		+'<xpathStatments> ::= <xpathStatment> | <xpathStatment> <xpathStatments>\n'
