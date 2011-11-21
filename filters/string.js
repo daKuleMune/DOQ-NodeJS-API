@@ -11,18 +11,6 @@ var filterObject = require( "../lib/filter.js" ).Filter;
 exports.Filter = function(){
 	
 	this.name = "string";
-	
-	this.queryable = false;
-
-	this.QueryObject = function( query ){
-		if( query.value != undefined ){
-			//The compile flag gets turned off so the object will be recreated with the new value//
-			this.dataStream = v;
-			this.dataObject = null;
-			//SAVE
-		}
-		return this.dataObject;
-	};
 
 	this.Creation = function( ){
 		this.dataObject = this.dataStream;

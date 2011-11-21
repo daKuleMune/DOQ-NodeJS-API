@@ -12,8 +12,6 @@ var libxml = require( "../lib/libxmli.js" ).libxml;
 exports.Filter = function(){
 	
 	this.name = "xml";
-
-	this.queryable = true;
 	
 	this.bnf = '<syntax> ::= <columnName> <xpath>\n'
 		+'<xpath> ::= <xpathStatments>\n'
@@ -66,12 +64,18 @@ exports.Filter = function(){
 			}
 		}
 		else{
-			return this.dataObject.root();
+			return this;
 		}
 	};
 
 	this.Creation = function( ){
 		this.dataObject = libxml.parseXmlString( "<__root>" + this.dataStream + "</__root>" );
+		var self = this;
+		this.dataObject.Save = function(){ self.Save() };
+	};
+	
+	this.Serialize = function(){
+		return this.dataObject.root().toString().replace( /\<__root\>/g, "" ).replace( /\<\/__root\>/g, "" );
 	};
 	
 	//ABSTRACTION LAYER//
