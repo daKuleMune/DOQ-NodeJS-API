@@ -20,7 +20,9 @@ exports.Filter = function(){
 		+'<xpathVariable> ::= <attribute> <_text>\n'
 		+'<argumentData> ::= "" | "[" <_owsp> <arguments> <_owsp> "]"\n'
 		+'<arguments> ::= <arrayArg>\n'
-		+'<arrayArg> ::= <_digits>\n'
+		+'<arrayArg> ::= <_digits> | <attributeCheck>\n'
+		+'<attributeCheck> ::= "@" <_text> <equateKey> <_literal>\n'
+		+'<equateKey> ::= "="\n'
 		+'<attribute> ::= "" | <isAttribute>\n'
 		+'<isAttribute> ::= "@"\n'
 		+'<scope> ::= "/" | "//"';
