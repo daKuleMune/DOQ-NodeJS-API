@@ -1,4 +1,4 @@
-<syntax> ::= <connection> "/" <table> "/" <column>
+<syntax> ::= <connection> "/" <table> "/" <column> <defaultValueOption>
 <connection> ::= "@" <connectionName>
 	<connectionName> ::= <_text>
 <table> ::= <tableName> <tableSelection> <tableReturn> | <tableName> <tableReturn> | <tableName>
@@ -19,3 +19,5 @@
 	<selectAll> ::= "*"
 	<selectFirst> ::= "$"
 	<selectExecute> ::= "!"
+<defaultValueOption> ::= <defaultValue> | ""
+	<defaultValue> ::=  "|" <_literal>
