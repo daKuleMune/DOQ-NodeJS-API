@@ -1,6 +1,7 @@
 /*!
  * DOQ API: Filter for csv files
- * @version 0.0.1
+ * @version 0.0.2
+ * @author Stev0 <steven@navolutions.com>
  */
 
 /*!

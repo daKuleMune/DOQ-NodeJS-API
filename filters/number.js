@@ -1,6 +1,7 @@
 /*!
  * DOQ API: Filter for numbers
  * @version 0.0.1
+ * @author Stev0 <steven@navolutions.com>
  */
 
 /*!
