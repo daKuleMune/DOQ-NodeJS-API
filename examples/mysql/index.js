@@ -59,31 +59,19 @@ var connection = function(){
 					if( e ){
 						console.log( "MYSQL Error in finding rows: " + e );
 					}
-					rows.totalRows = r[0].found_rows;
-					self.SetQueryCatalogue( query, rows );
-					self.Query( query );
+					if( r[0].found_rows == 0 ){
+						self.DispatchQuery( null, query );
+					}
+					else{
+						rows.totalRows = r[0].found_rows;
+						self.SetQueryCatalogue( query, rows );
+						self.DispatchQuery( rows, query );
+					}
 				} );
 			} );
 		}
 		else{
-			switch( query.type ){
-			case "*":
-				var dbObjectArray = [];
-				for( var i = 0; i < queryCat.length; i++ ){
-					dbObjectArray.push( this.DBObjectCache( queryCat[i], query ).QueryObject( query ) );
-				}
-				query.callback( dbObjectArray );
-				break;
-			case "!":
-				query.callback( queryCat.totalRows > 0 );
-				break;
-			case "$":
-				query.callback( this.DBObjectCache( queryCat[0], query ).QueryObject( query ) );
-				break;
-			default:
-				console.log( "Unrecognized query.type '" + query.type + "'" );
-				break;
-			}
+			this.DispatchQuery( queryCat, query );
 		}
 	};
 }
