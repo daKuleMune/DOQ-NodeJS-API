@@ -14,7 +14,7 @@ exports.Filter = function(){
 	this.name = "string";
 
 	this.Creation = function( ){
-		this.dataObject = this.dataStream;
+		this.dataObject = this.dataStream.toString();
 	};
 	
 	//ABSTRACTION LAYER//

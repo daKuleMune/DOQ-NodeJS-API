@@ -13,7 +13,7 @@ exports.Filter = function(){
 	
 	this.name = "ini";
 
-	this.bnf = '<syntax> ::= <columnName> <group> <setting> | <columnName> <setting>\n<group> ::= "/" <_text>\n<setting> ::= "." <_text>';
+	this.bnf = '<syntax> ::= <group> <setting> | <setting>\n<group> ::= "/" <_text>\n<setting> ::= "." <_text>';
 
 	this.parseEvents = {
 		"group":function( token ){

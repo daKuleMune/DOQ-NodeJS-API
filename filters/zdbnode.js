@@ -40,7 +40,7 @@ exports.Filter = function(){
 	this.QueryObject = function( query ){
 		//query.type
 		if( query.columnQuery != undefined ){
-			return this.dataObject.Query( { serverQuery:true }, query.columnQuery.substring( 1 ) + query.type );
+			return this.dataObject.Query( { serverQuery:true }, query.columnQuery + query.type );
 		}
 		else{
 			return this;
@@ -52,6 +52,7 @@ exports.Filter = function(){
 		var dbpath = subfactor.connection.dataCatalogue.ReadNodeAttribute( subfactor.connectionName, "node[@id='"+ subfactor.baseNode + "']/node[@id='" + this.saveName + "']", "dbpath" );
 		dbpath = dbpath.replace( /\{\%value\}/, this.dataStream );
 		var self = this;
+		
 		doqInterface.Query( { serverQuery:true }, dbpath, null, function( result ){
 			self.dataObject = result;
 			self.parent.NotifyCompiledItem();

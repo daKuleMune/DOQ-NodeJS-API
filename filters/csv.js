@@ -13,7 +13,7 @@ exports.Filter = function(){
 	
 	this.name = "csv";
 
-	this.bnf = '<syntax> ::= <columnName> <iter>\n<iter> ::= "[" <_owsp> <_digits> <_owsp> "]"';
+	this.bnf = '<syntax> ::= <iter>\n<iter> ::= "[" <_owsp> <_digits> <_owsp> "]"';
 
 	this.parseEvents = {
 		"iter":function( token ){
